@@ -1,12 +1,12 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon main.js",
+    "start": "node main.js",
+    "startt": "nodemon main.js",
     "testServer": "set HOST=localhost&& set PORT=8000&& node server.js"
   },
   "keywords": [],
@@ -27,5 +27,14 @@
   "devDependencies": {
     "nodemon": "^3.0.1",
     "sharp": "^0.32.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Martinn33/Back-endWebPipi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Martinn33/Back-endWebPipi/issues"
+  },
+  "homepage": "https://github.com/Martinn33/Back-endWebPipi#readme",
+  "description": ""
 }
