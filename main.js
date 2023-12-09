@@ -1,8 +1,10 @@
 // Uso "type": "module", ES6 usar modulos import y export
-import app from "./src/app.js";
-import {sequelize} from "./src/database/database.js";
+import app from "./src/app.js"
+import {sequelize} from "./src/database/database.js"
 import  "./src/database/models/CardsModels.js"
-const PORT = process.env.PORT || 3001
+import {} from "dotenv/config.js"
+const PORT = process.env.PORT
+console.log(process.env.PORT)
 
 async function main () {
         try {
