@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node main.js",
-    "startt": "nodemon main.js",
-    "testServer": "set HOST=localhost&& set PORT=8000&& node server.js"
+    "startt": "nodemon main.js"
   },
   "keywords": [],
   "author": "",

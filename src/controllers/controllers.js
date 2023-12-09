@@ -3,7 +3,6 @@ import Cards from "../database/models/CardsModels.js";
 //import Images from "../database/models/imageModels.js"
 
 //Imagen -D:
-import sharp from "sharp";
 import fs from "fs";
 //import { Console, profile } from "console";
 
