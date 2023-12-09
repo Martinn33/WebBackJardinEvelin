@@ -7,14 +7,7 @@ import fs from "fs";
 //import { Console, profile } from "console";
 
 
-
-const viewModels = async (req, res) =>{
-    const modell = await Cards.getAttributes()
-    console.log(modell.model)
-    res.json(modell)
-};
-
-const getRelojes = async (req, res) =>{
+const getCard = async (req, res) =>{
     try {   
         const Productos = await Cards.findAll({});
         res.status(200).json(Productos)
@@ -24,75 +17,20 @@ const getRelojes = async (req, res) =>{
     }
 };
 
-const createCard = async(req,res) =>{ // se puede mejorar con findOrCreate
-
+const searchId = async (req, res) =>{
     try {
-
-        const {name, description, price}= req.body;
-        await Cards.create({
-            name,
-            description,
-            price
-        })
-        // Cards.save()
-        res.status(200).send("se creo la newCard ");
+        const {id} = req.params;
+        const search = await Cards.findByPk(id);
+        console.log(search)
+        res.status(200).json({ProductoId:search})
 
     } catch (error) {
-        res.status(404).json({"no se pudo crear, por el error ": error.message})
+        res.json(error)
     }
-};
-
-const updateImg  = async(req, res) =>{
-     const {ProductoIdid} = req.params;
-     const {buffer} = req.file;
-    try {
-        const a =await Cards.update({ imageBuffer: buffer + ".png"}, {
-            where: {
-              id: ProductoIdid
-            }
-          });
-    res.status(200).json({message:"Se actualizo la imagen por id de la card", card: a})
-    } catch (err){
-        console.error(err)
-    }
-};
-
-const createImg = async(req, res) =>{ // esta de onda no existe 
-     const imagen = req.file;
-     try {
-         const imageBuffer = imagen.buffer;
-         await Images.create({
-             image: imageBuffer
-         })
-         res.status(200).json({message:"La imagen se guardo con, Buffer: ", Buffer: imageBuffer});
-        
-     } catch (error) {
-         console.log("erorrr"+ error)
-     }
- };
-
-const createImages = async (req, res) =>{ // no funciona
-    const {gallery} = req.files;
-    res.json(gallery)
-    // console.log(gallery)
-    //   try {
-    //        const a = await gallery.map((file) => {
-    //         console.log(file)
-
-    //         //  Images.create({
-    //         //      image: file.buffer
-    //         //  })
-    //        })
-    //      res.status(200).json({message: "se cargaron las News ImgBuffers", });
-        
-    //   } catch (error) {
-    //       console.log("erorrr"+ error)
-    //   }
 };
 
 const fsImg = async(req, res)=>{
     const {id}= req.params;
-
     try {
         const {image} = await Cards.findByPk(id);
     //      const processimage = sharp(image.buffer).resize(800, 200,{
@@ -109,18 +47,6 @@ const fsImg = async(req, res)=>{
 
     } catch (error) {
         return(error)
-    }
-};
-
-const searchId = async (req, res) =>{
-    try {
-        const {id} = req.params;
-        const search = await Cards.findByPk(id);
-        console.log(search)
-        res.status(200).json({ProductoId:search})
-
-    } catch (error) {
-        res.json(error)
     }
 };
 
@@ -142,39 +68,8 @@ const deleteId = async (req, res) =>{
     }
 };
 
-const deletAll = async (req, res) =>{
-    // const {id} = req.params;
-    // const finbypk = await Cards.findByPk(id)
-    // res.json(finbypk)
-    // console.log(finbypk)
 
-
-};
-
-const buscarYcontar = async (req, res) =>{
-    const {name} = req.params;
-    try {
-        const {count, rows }= await Cards.findAndCountAll({ //rows matriz con los obj q coincidan
-            where:{
-                name:{
-                    [Op.like]: name
-                }
-            }
-        })
-        const obj ={
-            Array: rows,
-            count: count
-        }
-        res.json(obj)
-        
-    } catch (error) {
-        res.json({ERROR: error})
-    }
-    
-    
-};
-
-const updating = async (req, res) =>{
+const updating = async (req, res) =>{ // actualizar valores acorde a la db
   try {  
     const {id} = req.params;
     const {name, description, price} = req.body;
@@ -212,12 +107,9 @@ const crearCards = async (req, res) =>{ // multer en file router, crea una image
 };
 
  export default {
-     createCard,
-     getRelojes,
-     createImg,
+     getCard,
      fsImg,
      crearCards,
      searchId,
-     updateImg,
      deleteId,
  }
