@@ -1,9 +1,29 @@
-import {Sequelize} from "sequelize";
+//import {Sequelize} from "sequelize";
 
 
- export const sequelize = new Sequelize('postgres://postgres:admin@localhost:5432/ecommerceDbb'); // Example 
-
+//export const sequelize = new Sequelize('postgres://postgres:admin@localhost:5432/webpipiDB');
  
+const { Pool } = require('pg')
+ 
+const pool = new Pool({
+  connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+})
+
+pool.connect((err) => {
+    if (err) throw err
+    console.log("Connect to PostgreSQL successfully!")
+})
+
+module.exports = pool
+
+
+
+
+
+
+
+
+
 
 // const {DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT} = require(process.env);
 //  console.log(DB_HOST + "nombreee del host de la base de datosss 9jciefnweibvuivbrubvu")

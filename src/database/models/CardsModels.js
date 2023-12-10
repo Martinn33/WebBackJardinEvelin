@@ -1,33 +1,33 @@
-import { DataTypes } from 'sequelize';
-import {sequelize} from '../database.js';
-//import Images from "./imageModels.js"
+// import { DataTypes } from 'sequelize';
+// import {sequelize} from '../database.js';
+// //import Images from "./imageModels.js"
 
-const Cards = sequelize.define(
-    'cards', {
-    id: {
-        type: DataTypes.INTEGER,
-        // defaultValue: DataTypes.UUIDV4,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    path: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
+// const Cards = sequelize.define(
+//     'cards', {
+//     id: {
+//         type: DataTypes.INTEGER,
+//         // defaultValue: DataTypes.UUIDV4,
+//         primaryKey: true,
+//         autoIncrement: true
+//     },
+//     path: {
+//         type: DataTypes.STRING,
+//         allowNull: false
+//     },
 
-    model: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
+//     model: {
+//         type: DataTypes.STRING,
+//         allowNull: false,
+//     },
 
-    description: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
+//     description: {
+//         type: DataTypes.STRING,
+//         allowNull: false
+//     },
 
-}, { timestamps: false }
+// }, { timestamps: false }
 
-);
+// );
 
 export default Cards;
 /*class Cards extends Model {
