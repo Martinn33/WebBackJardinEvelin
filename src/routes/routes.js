@@ -37,7 +37,7 @@ router.get("/upload", (req, res)=>{
     res.render("upload")
 });
 router.post("/upload",upload, handler.crearCards)
-router.get("/",(req,res)=>{ res.send("HOLIII") })
+router.get("/",(req,res)=>{ res.send("HOLA MUNDO") })
 
 router.get("/get", handler.getCard);
 router.delete("/relojes/:id", handler.deleteId); // params
