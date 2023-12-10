@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import  handler from "../controllers/controllers.js";
+//import  handler from "../controllers/controllers.js";
 import path, {dirname} from "path";
 import { fileURLToPath } from "url";
 import multer from "multer";
 import  {  v4  as  uuidv4  } from 'uuid';
-import Cards from "../database/models/CardsModels.js"
+//import Cards from "../database/models/CardsModels.js"
 //inicial
 const __filename= fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -36,18 +36,18 @@ const upload = multer({
 router.get("/upload", (req, res)=>{
     res.render("upload")
 });
-router.post("/upload",upload, handler.crearCards)
+// router.post("/upload",upload, handler.crearCards)
 router.get("/",(req,res)=>{ res.send("HOLA MUNDO") })
 
-router.get("/get", handler.getCard);
-router.delete("/relojes/:id", handler.deleteId); // params
-router.get("/productos/:id", handler.searchId);
+// router.get("/get", handler.getCard);
+// router.delete("/relojes/:id", handler.deleteId); // params
+// router.get("/productos/:id", handler.searchId);
 
-router.get("/imagess", async(req,res)=>{ //galeria views index.ejs
-    const images = await Cards.findAll();
-    res.render('index',  {images} );
+// router.get("/imagess", async(req,res)=>{ //galeria views index.ejs
+//     const images = await Cards.findAll();
+//     res.render('index',  {images} );
   
-})
+// })
 
 
 export default router;

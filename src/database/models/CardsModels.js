@@ -29,7 +29,7 @@
 
 // );
 
-export default Cards;
+// export default Cards;
 /*class Cards extends Model {
     static init(sequelize){
         return super.init({
